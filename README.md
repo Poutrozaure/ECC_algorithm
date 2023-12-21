@@ -6,21 +6,21 @@ I reused __utils.py__ and __utils_align.py__ and my __ECC.py__ is an adapted ver
 1. First step is to install the good packages
 
 ```
-!pip install -r Requirement.txt
+pip install -r Requirement.txt
 ```
 
 2. Second is to run algorithm
 ```
-!python ECC.py --source_smartphone /content/image_camera --target_DSLR /content/image_DSLR --multi_patches
+python ECC.py --source_smartphone /content/image_camera --target_DSLR /content/image_DSLR --multi_patches
 ```
 
 options are the following :
 
 [--output]: output folder to save the patches
 
-[--source_smartphone]: source is the template, the image we don't want to modify
+[--template_smartphone]: source is the template, the image we don't want to modify
 
-[--target_DSLR]: target is file we want to modify to fit the source image
+[--object_DSLR]: target is file we want to modify to fit the source image
 
 [--patch_width]: width value for source patch
 
