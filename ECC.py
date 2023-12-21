@@ -26,8 +26,8 @@ if __name__ == "__main__":
 
   parser = argparse.ArgumentParser()
   parser.add_argument("--output", type=str, default= "/content/image_output", help="output folder to save the patches")
-  parser.add_argument("--source_smartphone", type=str, default= "/content/camera", help="source is the template, the image we don't want to modify")
-  parser.add_argument("--target_DSLR", type=str, default= "/content/dslr", help="target is file we want to modify to fit the source image")
+  parser.add_argument("--template_smartphone", type=str, default= "/content/camera", help="source is the template, the image we don't want to modify")
+  parser.add_argument("--object_DSLR", type=str, default= "/content/dslr", help="target is file we want to modify to fit the source image")
   parser.add_argument("--patch_width", type=int, default=512)
   parser.add_argument("--patch_height", type=int, default=512)
   parser.add_argument("--stride", type=int, default=512)
@@ -64,10 +64,10 @@ if __name__ == "__main__":
   MOTION_MODEL = "ECC"
   tform_txt = os.path.join(folder, 'tform.txt')
 
-  allfiles_source=sorted(os.listdir(args.source_smartphone), key=natural_key)
+  allfiles_source=sorted(os.listdir(args.template_smartphone), key=natural_key)
   allfiles_source=[filename for filename in allfiles_source if filename[-4:] in [".jpg", ".JPG",".png",".PNG"]]
 
-  allfiles_target=sorted(os.listdir(args.target_DSLR), key=natural_key)
+  allfiles_target=sorted(os.listdir(args.object_DSLR), key=natural_key)
   allfiles_target=[filename for filename in allfiles_target if filename[-4:] in [".jpg", ".JPG",".png",".PNG"]]
 
   if(args.verbose):
@@ -90,8 +90,8 @@ if __name__ == "__main__":
 
         if(args.verbose):
           print(allfiles_source[index_photo])
-        shutil.copyfile(os.path.join(args.source_smartphone,allfiles_source[index_photo]), os.path.join(temp_inp,f"s{allfiles_source[index_photo]}"))
-        shutil.copyfile(os.path.join(args.target_DSLR,allfiles_source[index_photo]), os.path.join(temp_inp,f"t{allfiles_source[index_photo]}"))
+        shutil.copyfile(os.path.join(args.template_smartphone,allfiles_source[index_photo]), os.path.join(temp_inp,f"s{allfiles_source[index_photo]}"))
+        shutil.copyfile(os.path.join(args.object_DSLR,allfiles_source[index_photo]), os.path.join(temp_inp,f"t{allfiles_source[index_photo]}"))
 
         allfiles=[f for f in os.listdir(temp_inp)]
         imlist=[filename for filename in allfiles if filename[-4:] in [".jpg", ".JPG",".png",".PNG"]]
@@ -221,8 +221,8 @@ if __name__ == "__main__":
         if(args.verbose):
           print(allfiles_source[index_photo])
 
-        shutil.copyfile(os.path.join(args.source_smartphone,allfiles_source[index_photo]), os.path.join(temp_inp,f"s{allfiles_source[index_photo]}"))
-        shutil.copyfile(os.path.join(args.target_DSLR,allfiles_source[index_photo]), os.path.join(temp_inp,f"t{allfiles_source[index_photo]}"))
+        shutil.copyfile(os.path.join(args.template_smartphone,allfiles_source[index_photo]), os.path.join(temp_inp,f"s{allfiles_source[index_photo]}"))
+        shutil.copyfile(os.path.join(args.object_DSLR,allfiles_source[index_photo]), os.path.join(temp_inp,f"t{allfiles_source[index_photo]}"))
 
         allfiles=sorted([f for f in os.listdir(temp_inp)])
         imlist=[filename for filename in allfiles if filename[-4:] in [".jpg", ".JPG",".png",".PNG"]]
