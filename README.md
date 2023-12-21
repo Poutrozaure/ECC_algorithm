@@ -22,9 +22,9 @@ options are the following :
 
 [--target_DSLR]: target is file we want to modify to fit the source image
 
-[--patch_width]: width value for patch
+[--patch_width]: width value for source patch
 
-[--patch_height]: height value for patch
+[--patch_height]: height value for source patch
 
 [--stride]: stride value for multipatch search
 
